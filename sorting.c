@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:18:28 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/06 17:37:53 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:06:33 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,4 @@ void	change_input_to_index(t_arr *a)
 	trash = a->stack;
 	a->stack = temp;
 	free(trash);
-	/*int	k = 0;
-	while (k < a->size)
-	{
-		printf("meaw: %d\n", temp[k]);
-		k++;
-	}*/
 }
