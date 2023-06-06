@@ -3,20 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+         #
+#    By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 15:27:44 by pboonpro          #+#    #+#              #
-#    Updated: 2023/06/06 16:29:53 by pboonpro         ###   ########.fr        #
+#    Updated: 2023/06/07 02:56:13 by pboonpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = ft_atoi.c ft_putendl_fd.c ft_split.c ft_substr.c \
-m_push.c m_reverse.c m_rotate.c m_swap.c meaw.c \
+SRC = m_push.c m_reverse.c m_rotate.c m_swap.c meaw.c \
 sorting.c \
 
 OBJ = $(SRC:%.c=%.o)
+
+LIBFT = libft/libft.a
 
 CC = gcc
 
@@ -25,12 +26,15 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@
+	make -C ./libft
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT)
 
 clean :
+	make clean -C libft
 	rm -rf $(OBJ)
 
 fclean : clean
+	make fclean -C libft
 	rm -rf $(NAME)
 
 re : fclean all
