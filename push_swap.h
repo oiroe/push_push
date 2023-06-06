@@ -46,5 +46,9 @@ void	rrb(t_arr *arr_b);
 void	rrr(t_arr *arr_a, t_arr *arr_b);
 void	pa(t_arr *a, t_arr *b);
 void	pb(t_arr *a, t_arr *b);
+void	swap(t_arr *a, int index1, int index2);
+void	selection_sort(t_arr *a);
+void	display(t_arr *arr, t_arr *b);
+void	change_input_to_index(t_arr *a);
 
 #endif

@@ -159,16 +159,23 @@ int main(int ac, char **av)
 {
 	t_arr	*a;
 	t_arr	*b;
-	int		num;
+	//int		num;
 
 	a = init_stack_a(ac, av);
 	b = stack_init(countstr(av[1], ' '));
 	display(a, b);
-	sa(a);
+	change_input_to_index(a);
 	display(a, b);
-	pb(a, b);
+	//selection_sort(a);
+	//sa(a);
+	//display(a, b);
+	/*pb(a, b);
 	display(a, b);
 	pa(a, b);
-	display(a, b);
+	display(a, b);*/
+	free(a->stack);
+	free(b->stack);
+	free(a);
+	free(b);
 	return (0);
 }
