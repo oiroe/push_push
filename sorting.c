@@ -6,11 +6,33 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:18:28 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/06 18:06:33 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:09:02 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	put_index(t_arr *a, int *temp)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < a->size)
+	{
+		j = 0;
+		while (j < a->size)
+		{
+			if (temp[i] == a->stack[j])
+			{
+				temp[i] = j;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	stackcpy(int *dest, t_arr *a)
 {
@@ -47,29 +69,13 @@ void	change_input_to_index(t_arr *a)
 {
 	int	*temp;
 	int	*trash;
-	int	i;
-	int	j;
 
 	temp = malloc(sizeof(int) * a->size);
 	if (!temp)
 		return ;
 	stackcpy(temp, a);
 	selection_sort(a);
-	i = 0;
-	while (i < a->size)
-	{
-		j = 0;
-		while (j < a->size)
-		{
-			if (temp[i] == a->stack[j])
-			{
-				temp[i] = j;
-				break ;
-			}
-			j++;
-		}
-		i++;
-	}
+	put_index(a, temp);
 	trash = a->stack;
 	a->stack = temp;
 	free(trash);
