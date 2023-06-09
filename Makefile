@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 15:27:44 by pboonpro          #+#    #+#              #
-#    Updated: 2023/06/07 02:56:13 by pboonpro         ###   ########.fr        #
+#    Updated: 2023/06/09 00:36:13 by pboonpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = m_push.c m_reverse.c m_rotate.c m_swap.c meaw.c \
-sorting.c \
+SRC = movement/m_push.c movement/m_reverse.c movement/m_rotate.c \
+movement/m_swap.c meaw.c \
+change_into_index.c stack_op.c check_input.c ft_atol.c\
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -21,13 +22,13 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	make -C ./libft
-	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT)
+	$(CC) $(CFLAGS) $^ $(LIBFT) -o $@
 
 clean :
 	make clean -C libft
