@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:41:05 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/09 00:22:21 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/14 02:07:16 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,25 @@ void	check_input(int ac, char **av)
 {
 	int		i;
 	char	**temp;
+	char	*before;
+	char	*join;
+	char	*del;
 
-	i = 0;
-	if (ac == 2)
-		temp = ft_split(av[1], ' ');
-	else
+	i = 1;
+	join = malloc(sizeof(char *) * 1);
+	join[0] = '\0';
+	while (i < ac)
 	{
-		i = 1;
-		temp = av;
+		before = ft_strjoin(" ", av[i]);
+		del = join;
+		join = ft_strjoin(join, before);
+		free(before);
+		free(del);
+		i++;
 	}
+	temp = ft_split(join, ' ');
+	free(join);
+	i = 0;
 	do_check(temp, i);
-	if (ac == 2)
-		my_free(temp);
+	my_free(temp);
 }

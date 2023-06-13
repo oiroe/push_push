@@ -30,7 +30,7 @@ t_arr	*stack_init(unsigned int n)
 	return (arr);
 }
 
-t_arr	*init_stack_a(int ac, char **av)
+/*t_arr	*init_stack_a(int ac, char **av)
 {
 	int		i;
 	char	**temp;
@@ -56,7 +56,40 @@ t_arr	*init_stack_a(int ac, char **av)
 	if (ac == 2)
 		my_free(temp);
 	return (new);
-}
+} old ver*/
+
+t_arr	*init_stack_a(int ac, char **av)
+{
+	int		i;
+	char	**temp;
+	char	*join;
+	char	*before;
+	char	*del;
+	t_arr	*new;
+
+	i = 1;
+	join = malloc(sizeof(char *) * 1);
+	join[0] = '\0';
+	while (i < ac)
+	{
+		before = ft_strjoin(" ", av[i]);
+		del = join;
+		join = ft_strjoin(join, before);
+		free(before);
+		free(del);
+		i++;
+	}
+	temp = ft_split(join, ' ');
+	free(join);
+	i = 0;
+	while (temp[i])
+	{
+		push(new, ft_atoi(temp[i]));
+		i++;
+	}
+	my_free(temp);
+	return (new);
+} //error not init stack at first and norm error
 
 void	display(t_arr *arr, t_arr *b)
 {

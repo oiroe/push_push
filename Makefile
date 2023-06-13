@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+         #
+#    By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 15:27:44 by pboonpro          #+#    #+#              #
-#    Updated: 2023/06/09 00:36:13 by pboonpro         ###   ########.fr        #
+#    Updated: 2023/06/14 01:40:49 by pboonpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude -g
 
 all : $(NAME)
 
