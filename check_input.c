@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:41:05 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/14 02:07:16 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/14 21:46:58 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_isnum(char *num)
 	i = 0;
 	if (num[0] == '\0')
 		return (0);
-	if (num[i] == '-')
+	if (num[i] == '-' || num[i] == '+')
 		i++;
 	while (num[i])
 	{
@@ -61,29 +61,40 @@ void	do_check(char **temp, int i)
 	}
 }
 
+void	av_check(char *av)
+{
+	size_t	i;
+	int		count;
+	char	*temp;
+
+	temp = av;
+	count = 0;
+	i = 0;
+	while (i < strlen(temp))
+	{
+		if (ft_isdigit(temp[i]))
+				count++;
+		i++;
+	}
+	if (count == 0)
+		errorhand("Error");
+}
+
 void	check_input(int ac, char **av)
 {
 	int		i;
 	char	**temp;
-	char	*before;
 	char	*join;
-	char	*del;
 
 	i = 1;
-	join = malloc(sizeof(char *) * 1);
-	join[0] = '\0';
 	while (i < ac)
 	{
-		before = ft_strjoin(" ", av[i]);
-		del = join;
-		join = ft_strjoin(join, before);
-		free(before);
-		free(del);
+		av_check(av[i]);
 		i++;
 	}
+	join = join_input(ac, av);
 	temp = ft_split(join, ' ');
 	free(join);
-	i = 0;
-	do_check(temp, i);
+	do_check(temp, 0);
 	my_free(temp);
 }

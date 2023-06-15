@@ -27,7 +27,7 @@ typedef struct s_arr
 }			t_arr;
 
 int		countstr(char const *s, char c);
-t_arr	*init_stack_a(int ac, char **av);
+t_arr	*init_stack_a(int ac, char **av, int *count);
 t_arr	*stack_init(unsigned int n);
 void	push(t_arr *arr, int num);
 int		pop(t_arr *arr);
@@ -45,11 +45,13 @@ void	pa(t_arr *a, t_arr *b);
 void	pb(t_arr *a, t_arr *b);
 void	swap(t_arr *a, int index1, int index2);
 void	selection_sort(t_arr *a);
-void	display(t_arr *arr, t_arr *b);
 void	change_input_to_index(t_arr *a);
 void	my_free(char **str);
 void	errorhand(char *str);
 void	check_input(int ac, char **av);
 long	ft_atol(const char *str);
+char	*join_input(int ac, char **av);
+void	free_stack(t_arr *a, t_arr *b);
+int		is_sort(t_arr	*a);
 
 #endif

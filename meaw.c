@@ -12,6 +12,25 @@
 
 #include "push_swap.h"
 
+/*void	display(t_arr *arr, t_arr *b)
+{
+	if(arr->top>=0)
+	{
+		printf("\nThe elements in STACK A\n");
+		for(int i = 0; i <= arr->top; i++)
+			printf("%d\n", arr->stack[i]);
+		printf("\n");
+		printf("\nThe elements in STACK B\n");
+		for(int j = 0; j <= b->top; j++)
+			printf("%d\n", b->stack[j]);
+		printf("\n");
+	}
+	else
+	{
+		printf("\n The STACK is empty");
+	}
+}*/
+
 t_arr	*stack_init(unsigned int n)
 {
 	t_arr	*arr;
@@ -30,42 +49,12 @@ t_arr	*stack_init(unsigned int n)
 	return (arr);
 }
 
-/*t_arr	*init_stack_a(int ac, char **av)
+char	*join_input(int ac, char **av)
 {
 	int		i;
-	char	**temp;
-	t_arr	*new;
-
-	i = 0;
-	if (ac == 2)
-	{
-		new = stack_init(countstr(av[1], ' '));
-		temp = ft_split(av[1], ' ');
-	}
-	else
-	{
-		i = 1;
-		temp = av;
-		new = stack_init(ac - 1);
-	}
-	while (temp[i])
-	{
-		push(new, ft_atoi(temp[i]));
-		i++;
-	}
-	if (ac == 2)
-		my_free(temp);
-	return (new);
-} old ver*/
-
-t_arr	*init_stack_a(int ac, char **av)
-{
-	int		i;
-	char	**temp;
 	char	*join;
 	char	*before;
 	char	*del;
-	t_arr	*new;
 
 	i = 1;
 	join = malloc(sizeof(char *) * 1);
@@ -79,8 +68,23 @@ t_arr	*init_stack_a(int ac, char **av)
 		free(del);
 		i++;
 	}
+	return (join);
+}
+
+t_arr	*init_stack_a(int ac, char **av, int *cc)
+{
+	int		i;
+	int		count;
+	char	**temp;
+	char	*join;
+	t_arr	*new;
+
+	join = join_input(ac, av);
+	count = countstr(join, ' ');
+	*cc = count;
 	temp = ft_split(join, ' ');
 	free(join);
+	new = stack_init(count);
 	i = 0;
 	while (temp[i])
 	{
@@ -89,51 +93,28 @@ t_arr	*init_stack_a(int ac, char **av)
 	}
 	my_free(temp);
 	return (new);
-} //error not init stack at first and norm error
-
-void	display(t_arr *arr, t_arr *b)
-{
-	if(arr->top>=0)
-	{
-		printf("\nThe elements in STACK A\n");
-		for(int i = 0; i <= arr->top; i++)
-			printf("%d\n", arr->stack[i]);
-		printf("\n");
-		printf("\nThe elements in STACK B\n");
-		for(int j = 0; j <= b->top; j++)
-			printf("%d\n", b->stack[j]);
-		printf("\n");
-	}
-	else
-	{
-		printf("\n The STACK is empty");
-	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_arr	*a;
 	t_arr	*b;
-	//int		num;
+	int		num;
 
 	if (ac == 1)
 		return (0);
+	b = NULL;
 	check_input(ac, av);
-	a = init_stack_a(ac, av);
-	b = stack_init(countstr(av[1], ' '));
-	//display(a, b);
+	a = init_stack_a(ac, av, &num);
+	if (is_sort(a))
+	{
+		free_stack(a, NULL);
+		return (0);
+	}
+	b = stack_init(num);
+	printf("size of b : %d\n", b->size);
 	change_input_to_index(a);
-	display(a, b);
-	/*selection_sort(a);
-	sa(a);
-	display(a, b);
-	pb(a, b);
-	display(a, b);
-	pa(a, b);
-	display(a, b);*/
-	free(a->stack);
-	free(b->stack);
-	free(a);
-	free(b);
+	//display(a, b);
+	free_stack(a, b);
 	return (0);
 }

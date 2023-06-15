@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   change_into_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:18:28 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/06 18:09:02 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:39:23 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sort(t_arr	*a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->size - 1)
+	{
+		if (a->stack[i] < a->stack[i + 1])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
 
 void	put_index(t_arr *a, int *temp)
 {
