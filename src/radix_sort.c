@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:04 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/23 20:42:43 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:51:34 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	max_bit(t_arr *a)
 		i++;
 	}
 	max_bit = 0;
-	while ((max >> max_bit)  != 0)
+	while ((max >> max_bit) != 0)
 		max_bit++;
 	return (max_bit);
 }
@@ -46,7 +46,7 @@ void	radix_sort(t_arr *a, t_arr*b)
 	while (i < most_bit)
 	{
 		j = 0;
-		while(j < size)
+		while (j < size)
 		{
 			temp = a->stack[0];
 			if ((temp >> i) & 1)
@@ -55,7 +55,7 @@ void	radix_sort(t_arr *a, t_arr*b)
 				pb(a, b);
 			j++;
 		}
-		while(!is_empty(b))
+		while (!is_empty(b))
 			pa(a, b);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 12:51:01 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/23 12:51:26 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:18:17 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ void	free_stack(t_arr *a, t_arr *b)
 	{
 		free(a->stack);
 		free(a);
+		a = NULL;
 	}
 	if (b != NULL)
 	{
 		free(b->stack);
 		free(b);
+		b = NULL;
 	}
 }
 
@@ -43,4 +45,5 @@ void	my_free(char **str)
 		i++;
 	}
 	free(str);
+	//str = NULL;
 }

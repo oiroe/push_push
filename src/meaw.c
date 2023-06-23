@@ -35,9 +35,9 @@ t_arr	*stack_init(unsigned int n)
 {
 	t_arr	*arr;
 
-	arr = malloc(sizeof(t_arr));
+	arr = malloc(sizeof(t_arr) * 1);
 	if (!arr)
-		return (0);
+		errorhand("Error");
 	arr->stack = malloc(sizeof(int) * n);
 	if (!arr->stack)
 	{
@@ -97,13 +97,11 @@ t_arr	*init_stack_a(int ac, char **av, int *cc)
 
 void	do_sort(t_arr *a, t_arr *b)
 {
-	/*if (a->size == 3)
+	if (a->size == 2 || a->size == 3)
 		sort_3(a);
 	else if (a->size == 5)
 		sort_5(a, b);
-	else if (a->size >= 100 && a->size < 500)
-		quick_sort();
-	else if (a->size >= 500)*/
+	else if (a->size > 5)
 		radix_sort(a, b);
 }
 
@@ -115,7 +113,6 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	b = NULL;
 	check_input(ac, av);
 	a = init_stack_a(ac, av, &num);
 	if (is_sort(a))

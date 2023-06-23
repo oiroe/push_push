@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 15:41:05 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/14 21:46:58 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:27:06 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_isdup(long check, char **temp, int i)
 	return (0);
 }
 
-void	do_check(char **temp, int i)
+void	do_check(char **temp, int i, char **trash)
 {
 	long	check;
 
@@ -52,11 +52,20 @@ void	do_check(char **temp, int i)
 	{
 		check = ft_atol(temp[i]);
 		if (!check_isnum(temp[i]))
+		{
+			my_free(trash);
 			errorhand("Error");
+		}
 		if (check_isdup(check, temp, i))
+		{
+			my_free(trash);
 			errorhand("Error");
+		}
 		if (check < -2147483648 || check > 2147483647)
+		{
+			my_free(trash);
 			errorhand("Error");
+		}
 		i++;
 	}
 }
@@ -73,7 +82,7 @@ void	av_check(char *av)
 	while (i < strlen(temp))
 	{
 		if (ft_isdigit(temp[i]))
-				count++;
+			count++;
 		i++;
 	}
 	if (count == 0)
@@ -95,6 +104,6 @@ void	check_input(int ac, char **av)
 	join = join_input(ac, av);
 	temp = ft_split(join, ' ');
 	free(join);
-	do_check(temp, 0);
+	do_check(temp, 0, temp);
 	my_free(temp);
 }

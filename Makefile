@@ -6,7 +6,7 @@
 #    By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 15:27:44 by pboonpro          #+#    #+#              #
-#    Updated: 2023/06/23 20:46:44 by pboonpro         ###   ########.fr        #
+#    Updated: 2023/06/23 23:30:25 by pboonpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Iinclude -g
+CFLAGS = -Wall -Wextra -Werror -Iinclude -g #-fsanitize=address
 
 all : $(NAME)
 
