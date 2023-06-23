@@ -99,6 +99,8 @@ void	do_sort(t_arr *a, t_arr *b)
 {
 	if (a->size == 2 || a->size == 3)
 		sort_3(a);
+	else if (a->size == 4)
+		sort_4(a, b);
 	else if (a->size == 5)
 		sort_5(a, b);
 	else if (a->size > 5)

@@ -57,5 +57,7 @@ void	sort_3(t_arr *stack);
 void	sort_5(t_arr *a, t_arr *b);
 int		is_empty(t_arr *a);
 void	radix_sort(t_arr *a, t_arr*b);
+int		get_min(t_arr *stack);
+void	sort_4(t_arr *a, t_arr *b);
 
 #endif
