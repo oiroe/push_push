@@ -18,6 +18,7 @@ void	push_from_bottom(t_arr *a, int num)
 
 	if (a->top >= a->size - 1 || !a)
 		return ;
+	a->top += 1;
 	i = a->top;
 	while (i > -1)
 	{
@@ -25,7 +26,6 @@ void	push_from_bottom(t_arr *a, int num)
 		i--;
 	}
 	a->stack[0] = num;
-	a->top += 1;
 }
 
 int	pop_from_bottom(t_arr *a)
@@ -37,7 +37,7 @@ int	pop_from_bottom(t_arr *a)
 		return (0);
 	temp = a->stack[0];
 	i = 0;
-	while (i < a->top)
+	while (i <= a->top)
 	{
 		a->stack[i] = a->stack[i + 1];
 		i++;

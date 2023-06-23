@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_op.c                                         :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 14:51:57 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/15 13:41:27 by pboonpro         ###   ########.fr       */
+/*   Created: 2023/06/23 12:51:01 by pboonpro          #+#    #+#             */
+/*   Updated: 2023/06/23 12:51:26 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,4 @@ void	my_free(char **str)
 		i++;
 	}
 	free(str);
-}
-
-void	push(t_arr *arr, int num)
-{
-	if (arr->top >= arr->size - 1 || !arr)
-		return ;
-	arr->top++;
-	arr->stack[arr->top] = num;
-}
-
-int	pop(t_arr *arr)
-{
-	int	num;
-
-	if (arr->top <= -1 || !arr)
-		return (0);
-	num = arr->stack[arr->top];
-	arr->top--;
-	return (num);
 }

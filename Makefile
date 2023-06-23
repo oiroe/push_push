@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pboonpro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 15:27:44 by pboonpro          #+#    #+#              #
-#    Updated: 2023/06/14 01:40:49 by pboonpro         ###   ########.fr        #
+#    Updated: 2023/06/23 20:46:44 by pboonpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = movement/m_push.c movement/m_reverse.c movement/m_rotate.c \
-movement/m_swap.c meaw.c \
-change_into_index.c stack_op.c check_input.c ft_atol.c\
+movement/m_swap.c src/meaw.c src/free.c\
+src/change_into_index.c src/stack_op.c src/check_input.c src/ft_atol.c\
+src/sort_sim.c src/radix_sort.c\
 
 OBJ = $(SRC:%.c=%.o)
 

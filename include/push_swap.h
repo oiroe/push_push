@@ -53,5 +53,9 @@ long	ft_atol(const char *str);
 char	*join_input(int ac, char **av);
 void	free_stack(t_arr *a, t_arr *b);
 int		is_sort(t_arr	*a);
+void	sort_3(t_arr *stack);
+void	sort_5(t_arr *a, t_arr *b);
+int		is_empty(t_arr *a);
+void	radix_sort(t_arr *a, t_arr*b);
 
 #endif

@@ -95,6 +95,18 @@ t_arr	*init_stack_a(int ac, char **av, int *cc)
 	return (new);
 }
 
+void	do_sort(t_arr *a, t_arr *b)
+{
+	/*if (a->size == 3)
+		sort_3(a);
+	else if (a->size == 5)
+		sort_5(a, b);
+	else if (a->size >= 100 && a->size < 500)
+		quick_sort();
+	else if (a->size >= 500)*/
+		radix_sort(a, b);
+}
+
 int	main(int ac, char **av)
 {
 	t_arr	*a;
@@ -112,9 +124,8 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	b = stack_init(num);
-	printf("size of b : %d\n", b->size);
 	change_input_to_index(a);
-	//display(a, b);
+	do_sort(a, b);
 	free_stack(a, b);
 	return (0);
 }
