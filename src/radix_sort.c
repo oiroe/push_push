@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:04 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/23 20:51:34 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:47:06 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 
 int	max_bit(t_arr *a)
 {
-	int	i;
 	int	max;
 	int	max_bit;
 
-	i = 0;
-	max = a->stack[0];
-	while (i <= a->top)
-	{
-		if (a->stack[i] > max)
-			max = a->stack[i];
-		i++;
-	}
+	max = get_max(a);
 	max_bit = 0;
 	while ((max >> max_bit) != 0)
 		max_bit++;

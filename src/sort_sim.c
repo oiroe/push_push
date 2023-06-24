@@ -6,7 +6,7 @@
 /*   By: pboonpro <pboonpro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:23:27 by pboonpro          #+#    #+#             */
-/*   Updated: 2023/06/24 02:01:54 by pboonpro         ###   ########.fr       */
+/*   Updated: 2023/06/24 14:44:33 by pboonpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	sort_5(t_arr *a, t_arr *b)
 {
 	int	max;
 	int	min;
+	int	i;
 
 	if (is_sort(a) || a->size > 5)
 		return ;
@@ -97,10 +98,12 @@ void	sort_5(t_arr *a, t_arr *b)
 	min = get_min(a);
 	sort_5_pushto_b(a, b, max, min);
 	sort_3(a);
-	pa(a, b);
-	if (a->stack[0] > a->stack[1])
-		ra(a);
-	pa(a, b);
-	if (a->stack[0] > a->stack[1])
-		ra(a);
+	i = 0;
+	while (i < 2)
+	{
+		pa(a, b);
+		if (a->stack[0] > a->stack[1])
+			ra(a);
+		i++;
+	}
 }
